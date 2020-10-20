@@ -84,11 +84,11 @@ public class CASOAuth2UserServices implements OAuth2UserService<OAuth2UserReques
 		RequestEntity<?> request = this.requestEntityConverter.convert(userRequest);
 
 		//ResponseEntity<?> response;
-		//ResponseEntity<Map> response;
-		Map<String,Object> response;
+		ResponseEntity<Map<String,Object>> response;
+		//Map<String,Object> response;
 		try {
 			
-			response =  (Map<String, Object>) this.restOperations.exchange(request, Map.class);
+			response =  this.restOperations.exchange(request, PARAMETERIZED_RESPONSE_TYPE);
 			
 		} catch (OAuth2AuthorizationException ex) {
 			OAuth2Error oauth2Error = ex.getError();
@@ -109,11 +109,10 @@ public class CASOAuth2UserServices implements OAuth2UserService<OAuth2UserReques
 					"An error occurred while attempting to retrieve the UserInfo Resource: " + ex.getMessage(), null);
 			throw new OAuth2AuthenticationException(oauth2Error, oauth2Error.toString(), ex);
 		}
-
-		Map<String, Object> userAttributesResult =  response;
 		
-		Map<String, Object> userAttributes = new HashMap<String,Object>();
-		userAttributes.put("username", "admin");
+		@SuppressWarnings("rawtypes")
+		Map userAttributes =  response.getBody();
+		//userAttributes.put("username", "admin");
 		
 		Set<GrantedAuthority> authorities = new LinkedHashSet<>();
 		authorities.add(new OAuth2UserAuthority(userAttributes));

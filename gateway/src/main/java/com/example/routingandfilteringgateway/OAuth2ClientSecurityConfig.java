@@ -2,7 +2,9 @@ package com.example.routingandfilteringgateway;
 
 import java.util.Arrays;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,7 +12,6 @@ import org.springframework.security.oauth2.client.endpoint.DefaultAuthorizationC
 import org.springframework.security.oauth2.client.endpoint.OAuth2AccessTokenResponseClient;
 import org.springframework.security.oauth2.client.endpoint.OAuth2AuthorizationCodeGrantRequest;
 import org.springframework.security.oauth2.client.http.OAuth2ErrorResponseErrorHandler;
-import org.springframework.security.oauth2.client.userinfo.CustomUserTypesOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
@@ -53,10 +54,13 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private OAuth2UserService<OAuth2UserRequest, OAuth2User> userService() {
 		// TODO Auto-generated method stub
-		CASOAuth2UserServices userService = new CASOAuth2UserServices();
+		//CASOAuth2UserServices userService = new CASOAuth2UserServices();
+		DefaultOAuth2UserService userService= new DefaultOAuth2UserService();
+		MappingJackson2HttpMessageConverter convert = new MappingJackson2HttpMessageConverter();
+		convert.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_OCTET_STREAM));
 		RestTemplate restTemplate = new RestTemplate(Arrays.asList(
 				new FormHttpMessageConverter(),
-				new CASOAuth2UserInfoResponseHttpMessageConverter()));
+				convert));
 
 		restTemplate.setErrorHandler(new OAuth2ErrorResponseErrorHandler());
 		userService.setRestOperations(restTemplate);
