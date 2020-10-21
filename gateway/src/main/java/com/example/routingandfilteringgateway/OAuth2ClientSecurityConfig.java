@@ -57,7 +57,7 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
 		//CASOAuth2UserServices userService = new CASOAuth2UserServices();
 		DefaultOAuth2UserService userService= new DefaultOAuth2UserService();
 		MappingJackson2HttpMessageConverter convert = new MappingJackson2HttpMessageConverter();
-		convert.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_OCTET_STREAM));
+		convert.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_OCTET_STREAM,MediaType.APPLICATION_JSON));
 		RestTemplate restTemplate = new RestTemplate(Arrays.asList(
 				new FormHttpMessageConverter(),
 				convert));
