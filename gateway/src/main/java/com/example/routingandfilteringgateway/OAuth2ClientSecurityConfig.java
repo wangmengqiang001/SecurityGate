@@ -29,7 +29,7 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
 		
   		http
   			.authorizeRequests()
-  			.antMatchers("/mybooks/**")
+  			.antMatchers("/newbook/**","/user")
   			//.anonymous()
   			.permitAll()
   			.and()  		

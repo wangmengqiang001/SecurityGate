@@ -30,7 +30,12 @@ public class RoutingAndFilteringGatewayApplication {
   
   @GetMapping("/user")
   public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-      return Collections.singletonMap("name", principal.getAttribute("id"));
+        String value=null;
+	String key="id";
+	if(principal != null){
+		value = principal.getAttribute(key);
+	}
+	return Collections.singletonMap("name", value);
   }
   
   
