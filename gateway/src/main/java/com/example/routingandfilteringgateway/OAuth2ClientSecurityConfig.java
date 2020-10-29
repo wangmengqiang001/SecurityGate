@@ -29,7 +29,7 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
 		
   		http
   			.authorizeRequests()
-  			.antMatchers("/newbook/**","/user")
+  			.antMatchers("/newbook/**","/user","/login")
   			//.anonymous()
   			.permitAll()
   			.and()  		
@@ -47,7 +47,6 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
         		).oauth2Login(res -> res
         				.userInfoEndpoint(uc -> uc.userService(userService())));
        
-  		
   		
 	
 	}
