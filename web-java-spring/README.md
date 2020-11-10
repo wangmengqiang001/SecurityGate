@@ -1,25 +1,10 @@
 # web-spring-java-simple
-A simple Spring app
+# A simple Spring app  
+It is an simple example for eclipse che webIDE, which can be found from [project:web-java-spring](https://github.com/wangmengqiang001/web-java-spring).  
 
-# Developer Workspace
-
-[![Contribute](http://beta.codenvy.com/factory/resources/codenvy-contribute.svg)](http://beta.codenvy.com/f?id=hrh4c8gw8tlehd0i)
-
-# Stack to use
-
-FROM [codenvy/ubuntu_jdk8](https://hub.docker.com/r/codenvy/ubuntu_jdk8/)
-
-or
+An branch named 'cas-auth' exists in that repository which has the same code with this project. The authentication by CAS is added in the example according to  [java cas client](https://github.com/apereo/java-cas-client).
 
 
-FROM [codenvy/debian_jdk8](https://hub.docker.com/r/codenvy/debian_jdk8/)
+Some description is commented in issue #12.
 
-# How to run
-
-| #       | Description           | Command  |
-| :------------- |:-------------| :-----|
-| 1      | Build and copy war | `mvn -f ${current.project.path} clean install && cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war` |
-| 2      | Run Tomcat      |   `$TOMCAT_HOME/bin/catalina.sh run` |
-| 3 | Stop Tomcat      |    `$TOMCAT_HOME/bin/catalina.sh stop` |
-| 4 | Tomcat Debug Mode      |    `$TOMCAT_HOME/bin/catalina.sh jpda run` |
 
