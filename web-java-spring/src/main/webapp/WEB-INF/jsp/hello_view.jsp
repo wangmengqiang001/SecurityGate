@@ -18,5 +18,11 @@
       %>
     </div>
     <p>Open <a href="http://guizhou:8072/helloweb/" >helloweb</a> behind the gateway</p>
+    <p> embed the program in IFrame</p>
+    <div style="width:100%">
+
+<iframe style="border:none;width:100%;height:80%" src = "http://guizhou:8072/helloweb/"/>
+</div>
+  <p> In the  embeded page, X-Frame-Options SHOULD NOT BE DENY </p>
   </body>
 </html>
