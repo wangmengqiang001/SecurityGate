@@ -28,6 +28,13 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 		
   		http
+		  .authorizeRequests()
+                  .mvcMatchers("/login").permitAll() // here
+                  //.anyRequest().authenticated()
+                  .and()
+              	    	.oauth2Login()
+                    	.loginPage("/login") // and here
+                  .and()
   			.authorizeRequests()
   			.antMatchers("/newbook/**","/user","/login")
   			//.anonymous()

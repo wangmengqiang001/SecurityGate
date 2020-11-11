@@ -64,12 +64,4 @@ public class RoutingAndFilteringGatewayApplication {
 	}
 	return Collections.singletonMap("name", value);
   }
-  
-  
-  
-  
-
-  
-  
-
-}
+}  
