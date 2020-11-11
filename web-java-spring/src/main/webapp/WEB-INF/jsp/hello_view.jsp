@@ -17,5 +17,6 @@
           }
       %>
     </div>
+    <p>Open <a href="http://guizhou:8072/helloweb/" >helloweb</a> behind the gateway</p>
   </body>
 </html>
