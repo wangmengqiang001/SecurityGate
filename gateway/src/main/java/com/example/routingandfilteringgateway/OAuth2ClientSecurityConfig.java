@@ -35,6 +35,8 @@ public class OAuth2ClientSecurityConfig extends WebSecurityConfigurerAdapter {
               	    	.oauth2Login()
                     	.loginPage("/login") // and here
                   .and()
+		  .headers().frameOptions().disable()
+		  .and()
   			.authorizeRequests()
   			.antMatchers("/newbook/**","/user","/login")
   			//.anonymous()
